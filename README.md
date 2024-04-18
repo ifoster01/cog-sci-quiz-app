@@ -43,11 +43,3 @@ The development of the Cognitive Science Quiz App involves basic web development
 ## Significance and Impact
 
 The Cognitive Science Quiz App aims to provide users with an engaging platform for learning about cognitive science concepts in an interactive way. By combining coding skills with cognitive science themes, this project promotes both technical proficiency and cognitive understanding.
-
-## References
-
-[Insert references to relevant literature on cognitive science topics for quiz question inspiration]
-
----
-
-This project proposal outlines a simple and achievable coding project focused on creating a quiz application related to cognitive science themes, suitable for completion within a one-week timeframe and requiring only rudimentary knowledge of Next.js. Adjustments can be made based on specific project requirements and constraints.

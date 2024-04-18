@@ -39,6 +39,16 @@ export default function SignUp({
       return redirect("/signup?message=Email already in use! Please try again");
     }
 
+    const { data: user, error: error2 } = await supabase.auth.getUser();
+    const { error: error3 } = await supabase
+    .from("users")
+    .insert([{
+      id: user?.user?.id,
+      correct: 0,
+      total: 0,
+      question_num: 0
+    }]);
+
     return redirect("/authed");
   };
 

@@ -6,11 +6,13 @@ import { useSessionStore } from "./AuthContext";
 import Slider from "./(components)/Slider"
 import Dashboard from "./(components)/Dashboard"
 import Quizzes from "./(components)/Quizzes"
+import Scores from "./(components)/Scores"
+import Leaderboard from "./(components)/Leaderboard";
 
 export default function Authed() {
     const user = useSessionStore((state) => state.session);
 
-    const [dashActive, setDashActive] = useState(true)
+    const [activePage, setActivePage] = useState("dashboard");
 
     return (
         <div className="">
@@ -18,13 +20,12 @@ export default function Authed() {
                 Welcome to the Cognitive Science Quiz App, {user.user_metadata.firstname}!
             </h1>
     
-            <Slider props={{ dashActive, setDashActive }} />
+            <Slider props={{ activePage, setActivePage }} />
 
-            {dashActive ? (
-                <Dashboard user={user} />
-            ) : (
-                <Quizzes user={user} />
-            )}
+            {activePage === "dashboard" && <Dashboard user={user} />}
+            {activePage === "quizzes" && <Quizzes user={user} />}
+            {activePage === "scores" && <Scores user={user} />}
+            {activePage === "leaderboard" && <Leaderboard user={user} />}
         </div>
     )
 }

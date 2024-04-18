@@ -33,7 +33,7 @@ export const AuthWrapper: FC<{
     }, [updateSession, user]);
 
     return (
-        <div className="w-screen">
+        <div className="w-full max-w-screen">
             {userStore && children}
         </div>
     );
