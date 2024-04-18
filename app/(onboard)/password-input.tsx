@@ -19,8 +19,8 @@ export function PasswordInput() {
                 required
                 className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
             />
-            { showPassword && <EyeSlashIcon onClick={() => setShowPassword(!showPassword)} className="absolute right-2 top-2 h-6 w-6 text-gray-500 cursor-pointer" /> }
-            { !showPassword && <EyeIcon onClick={() => setShowPassword(!showPassword)} className="absolute right-2 top-2 h-6 w-6 text-gray-500 cursor-pointer" /> }
+            { showPassword && <EyeSlashIcon onClick={() => setShowPassword(!showPassword)} className="absolute right-2 top-2 h-6 w-6 text-gray-400 cursor-pointer" /> }
+            { !showPassword && <EyeIcon onClick={() => setShowPassword(!showPassword)} className="absolute right-2 top-2 h-6 w-6 text-gray-400 cursor-pointer" /> }
         </div>
     );
 }

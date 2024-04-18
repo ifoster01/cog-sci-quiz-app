@@ -1,41 +1,30 @@
-import { createClient } from "@/utils/supabase/server";
-import Header from "@/components/Header";
-import { redirect } from "next/navigation";
+"use client"
+import { useState } from "react"
+// store
+import { useSessionStore } from "./AuthContext";
+// components
+import Slider from "./(components)/Slider"
+import Dashboard from "./(components)/Dashboard"
+import Quizzes from "./(components)/Quizzes"
 
-export default async function ProtectedPage() {
-  const supabase = createClient();
+export default function Authed() {
+    const user = useSessionStore((state) => state.session);
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    const [dashActive, setDashActive] = useState(true)
 
-  if (!user) {
-    return redirect("/login");
-  }
+    return (
+        <div className="">
+            <h1 className="text-4xl font-bold text-center mt-4">
+                Welcome to the Cognitive Science Quiz App, {user.user_metadata.firstname}!
+            </h1>
+    
+            <Slider props={{ dashActive, setDashActive }} />
 
-  return (
-    <div className="flex-1 w-full flex flex-col gap-20 items-center">
-      <Header user={user} />
-      <div className="w-full">
-        <div className="py-6 font-bold bg-purple-950 text-center">
-          This is a protected page that you can only see as an authenticated
-          user
+            {dashActive ? (
+                <Dashboard user={user} />
+            ) : (
+                <Quizzes user={user} />
+            )}
         </div>
-      </div>
-
-      <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
-        <p>
-          Powered by{" "}
-          <a
-            href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-            target="_blank"
-            className="font-bold hover:underline"
-            rel="noreferrer"
-          >
-            Supabase
-          </a>
-        </p>
-      </footer>
-    </div>
-  );
+    )
 }

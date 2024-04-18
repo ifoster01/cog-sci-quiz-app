@@ -17,6 +17,8 @@ export default function SignUp({
     "use server";
 
     const origin = headers().get("origin");
+    const firstname = formData.get("firstname") as string;
+    const lastname = formData.get("lastname") as string;
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
     const supabase = createClient();
@@ -26,6 +28,10 @@ export default function SignUp({
       password,
       options: {
         emailRedirectTo: `${origin}/auth/callback`,
+        data: {
+          firstname,
+          lastname
+        },
       },
     });
 
@@ -71,7 +77,40 @@ export default function SignUp({
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+              <div className="grid grid-cols-2">
+                <div className="mr-1">
+                  <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                    First Name
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      id="firstname"
+                      name="firstname"
+                      type="text"
+                      autoComplete="given-name"
+                      required
+                      className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <div className="ml-1">
+                  <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                    Last Name
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      id="lastname"
+                      name="lastname"
+                      type="text"
+                      autoComplete="family-name"
+                      required
+                      className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 mt-6">
                 Email address
               </label>
               <div className="mt-2">
@@ -85,7 +124,6 @@ export default function SignUp({
                 />
               </div>
             </div>
-
             <div>
               <div className="flex items-center justify-between mt-6">
                 <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">

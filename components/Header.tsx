@@ -27,7 +27,7 @@ export default function Header({ user }: { user: any }) {
                     {user &&
                     <>
                         <li>
-                            <button onClick={() => logout()} className="hover:text-gray-700">
+                            <button onClick={() => logout()} className="text-xl hover:text-gray-700">
                                 Log out
                             </button>
                         </li>
