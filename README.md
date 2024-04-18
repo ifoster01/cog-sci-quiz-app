@@ -1,6 +1,3 @@
-Of course, here's the README content in Markdown (.md) format:
-
-```
 # Cognitive Science Quiz App
 
 ## Introduction
@@ -54,6 +51,3 @@ The Cognitive Science Quiz App aims to provide users with an engaging platform f
 ---
 
 This project proposal outlines a simple and achievable coding project focused on creating a quiz application related to cognitive science themes, suitable for completion within a one-week timeframe and requiring only rudimentary knowledge of Next.js. Adjustments can be made based on specific project requirements and constraints.
-```
-
-Feel free to adjust the content as needed!
